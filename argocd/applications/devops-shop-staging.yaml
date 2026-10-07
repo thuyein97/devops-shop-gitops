@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: devops-shop-staging
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/thuyein97/devops-shop.git
+      targetRevision: main
+      path: helm/devops-shop
+
+      helm:
+        valueFiles:
+          - $values/environments/staging/values-staging.yaml
+
+    - repoURL: https://github.com/thuyein97/devops-shop-gitops.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
+    syncOptions:
+      - CreateNamespace=true
