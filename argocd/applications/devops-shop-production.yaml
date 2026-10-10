@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+
+metadata:
+  name: devops-shop-production
+  namespace: argocd
+
+spec:
+  project: default
+
+  sources:
+    - repoURL: https://github.com/thuyein97/devops-shop.git
+      targetRevision: main
+      path: helm/devops-shop
+
+      helm:
+        valueFiles:
+          - $values/environments/production/values-production.yaml
+
+    - repoURL: https://github.com/thuyein97/devops-shop-gitops.git
+      targetRevision: main
+      ref: values
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: production
+
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

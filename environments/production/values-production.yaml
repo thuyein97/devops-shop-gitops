@@ -25,7 +25,7 @@ probes:
 
 ingress:
   enabled: false
-  host: devops-shop-staging.local
+  host: devops-shop-production.local
 
 monitoring:
   enabled: false
