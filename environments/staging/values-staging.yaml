@@ -3,7 +3,7 @@ replicaCount: 1
 image:
   repository: "534856791031.dkr.ecr.us-east-1.amazonaws.com/devops-shop"
   tag: ""
-  digest: ""
+  digest: "sha256:03a8451a0a9598506ee8c6e14da6cb628c92ec2e9fda15e6070673b93160c9d8"
   pullPolicy: IfNotPresent
 
 service:
