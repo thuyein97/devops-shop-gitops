@@ -2,7 +2,7 @@ replicaCount: 1
 
 image:
   repository: "534856791031.dkr.ecr.us-east-1.amazonaws.com/devops-shop"
-  tag: ""
+  tag: "latest"
   digest: "sha256:e478f59f811a09fa9fcf566ca19b2dc1c96c090392ce35278709a4a255f5303a"
   pullPolicy: IfNotPresent
 
@@ -31,13 +31,13 @@ monitoring:
   enabled: false
 
 serviceMonitor:
-  enabled: true
+  enabled: false
   interval: 15s
   # Must match the release name of your installed kube-prometheus-stack release
   release: prometheus
 
 alerting:
-  enabled: true
+  enabled: false
 
   rules:
     highErrorRate:
