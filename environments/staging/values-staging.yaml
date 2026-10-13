@@ -31,13 +31,13 @@ monitoring:
   enabled: false
 
 serviceMonitor:
-  enabled: false
+  enabled: true
   interval: 15s
   # Must match the release name of your installed kube-prometheus-stack release
   release: prometheus
 
 alerting:
-  enabled: false
+  enabled: true
 
   rules:
     highErrorRate:

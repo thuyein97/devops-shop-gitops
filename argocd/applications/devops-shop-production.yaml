@@ -4,6 +4,8 @@ kind: Application
 metadata:
   name: devops-shop-production
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 
 spec:
   project: default
@@ -26,5 +28,9 @@ spec:
     namespace: production
 
   syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
     syncOptions:
       - CreateNamespace=true
